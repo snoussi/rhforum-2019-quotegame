@@ -14,7 +14,7 @@ end
 rule "3 successives BUY Orders of same Quote"
 when
     $q : Quote()
-    $list : List( size == 3 ) from collect ( Order( orderType == OrderType.BUY , quote == $q.symbol )
+    $list : List( size == 3 ) from collect ( Order( )
                                                 over window:length(3)
                                                 from entry-point orderStream )
 then
