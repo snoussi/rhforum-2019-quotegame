@@ -6,10 +6,10 @@
 <!--    </kbase>-->
 <!--</kmodule>-->
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
-  <kbase name="myKB1" equalsBehavior="identity" eventProcessingMode="stream" packages="com.redhat.quotegame.processors">
+  <kbase name="myKB1" default="true" equalsBehavior="equality" eventProcessingMode="stream" packages="com.redhat.quotegame.processors">
     <ksession name="myStatefulKieSession" default="true" type="stateful" clockType="realtime"/>
   </kbase>
   <kbase name="myKB2" equalsBehavior="equality" packages="com.redhat.quotegame.processors">
-    <ksession name="myKieSession" type="stateful" />
+    <ksession name="myKieSession" type="stateless" />
   </kbase>
 </kmodule>

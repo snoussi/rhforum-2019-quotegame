@@ -26,7 +26,7 @@ public class QuotePriceUpdater {
     private KieSession ksession;
 
     @Inject
-    @Named("myKieSession")
+    @Named("myStatefulKieSession")
     QuotePriceUpdater( KieRuntimeBuilder runtimeBuilder ) {
         ksession = runtimeBuilder.newKieSession();
     }
@@ -45,7 +45,8 @@ public class QuotePriceUpdater {
         int quoteBefore = quote.hashCode();
 
         logger.info("Inserting Order fact ...");
-        ksession.insert(order);
+        ksession.getEntryPoint("orderStream").insert(order);
+//        ksession.insert(order);
 
         logger.info("Inserting Quote fact ...");
         FactHandle quoteFH = ksession.insert(quote);
